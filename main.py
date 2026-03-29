@@ -29,7 +29,7 @@ def bereken_akkoorden():
             output_label.config(text=f"Majeurtoonladder van {starttoon}: {akkoorden}")
         except ValueError:
             output_label.config(text=f"Sorry, {starttoon} is geen geldige toonsoort.")
-
+    tk.Button(root, padx=20, pady=50, text=f"Begin met songwriten!""\n""(opent een ander venster)", command=open_songwriting_venster).pack()
 
 
 
@@ -47,6 +47,7 @@ def bereken_akkoorden():
             output_label.config(text=f"Majeurtoonladder van {starttoon}: {akkoorden}")
         except ValueError:
             output_label.config(text=f"Sorry, {starttoon} is geen geldige toonsoort.")
+    tk.Button(root, padx=20, pady=50, text=f"Begin met songwriten!""\n""(opent een ander venster)", command=open_songwriting_venster).pack()
 
 
 
@@ -62,7 +63,7 @@ def bereken_akkoorden():
             output_label.config(text=f"Mineurtoonladder van {starttoon}: {akkoorden}")
         except ValueError:
            output_label.config(text=f"Sorry, {starttoon} is geen geldige toonsoort.")
-
+    tk.Button(root, padx=20, pady=50, text=f"Begin met songwriten!""\n""(opent een ander venster)", command=open_songwriting_venster).pack()
 
 
 
@@ -78,7 +79,7 @@ def bereken_akkoorden():
             output_label.config(text=f"Mineurtoonladder van {starttoon}: {akkoorden}")
         except ValueError:
             output_label.config(text=f"Sorry, {starttoon} is geen geldige toonsoort.")
-    
+    tk.Button(root, padx=20, pady=50, text=f"Begin met songwriten!""\n""(opent een ander venster)", command=open_songwriting_venster).pack()
 
 
 root = tk.Tk()
@@ -107,7 +108,7 @@ def open_songwriting_venster():
     tk.Label(songwriting_venster, text="Hier kunnen we songwriten!").pack(pady=10)
     tk.Button(songwriting_venster, text="Afsluiten", width=25, command=songwriting_venster.destroy).pack()
 
-tk.Button(root, padx=20, pady=50, text=f"Begin met songwriten!""\n""(opent een ander venster)", command=open_songwriting_venster).pack()
+
 
 tk.Button(root, text="Afsluiten", width=25, command=root.destroy).pack()
 
