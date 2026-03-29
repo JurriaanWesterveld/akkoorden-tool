@@ -2,6 +2,7 @@ from alle_tonen import *
 from toonsoort import *
 from grondtonen import *
 import tkinter as tk
+import tkinter.font as tkFont
 
 def normalize_toon(toon):
     toon = toon.strip()
@@ -35,6 +36,7 @@ def bereken_akkoorden():
 
 root = tk.Tk()
 root.title("Toonladder Generator")
+root.geometry("500x300")
 
 toonsoort_var = tk.StringVar(value="MAJEUR")
 tk.Label(root, text="Werk je in mineur of majeur?").pack()
@@ -46,7 +48,9 @@ starttoon_entry.pack()
 
 tk.Button(root, text="Bereken akkoorden", command=bereken_akkoorden).pack()
 
-output_label = tk.Label(root, text="", fg="blue", font=("Helvetica", 12))
+normal_font = tkFont.Font(family="Arial", size=18, weight="bold")
+output_label = tk.Label(root, text="", fg="green", font=normal_font)
 output_label.pack(pady=10)
 
+tk.Button(root, text="Afsluiten", width=25, command=root.destroy).pack()
 root.mainloop()
