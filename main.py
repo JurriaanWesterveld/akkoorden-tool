@@ -29,7 +29,11 @@ def bereken_akkoorden():
             output_label.config(text=f"Majeurtoonladder van {starttoon}: {akkoorden}")
         except ValueError:
             output_label.config(text=f"Sorry, {starttoon} is geen geldige toonsoort.")
-    elif toonsoort == "MAJEUR 7":
+
+
+
+
+    if toonsoort == "MAJEUR 7":
         starttoon = normalize_toon(starttoon)
         if starttoon in sharp_to_flat:
             starttoon = sharp_to_flat[starttoon]
@@ -43,7 +47,11 @@ def bereken_akkoorden():
             output_label.config(text=f"Majeurtoonladder van {starttoon}: {akkoorden}")
         except ValueError:
             output_label.config(text=f"Sorry, {starttoon} is geen geldige toonsoort.")
-    elif toonsoort == "MINEUR":
+
+
+
+
+    if toonsoort == "MINEUR":
         starttoon = normalize_toon(starttoon)
         if starttoon in flat_to_sharp:
             starttoon = flat_to_sharp[starttoon]
@@ -54,7 +62,11 @@ def bereken_akkoorden():
             output_label.config(text=f"Mineurtoonladder van {starttoon}: {akkoorden}")
         except ValueError:
            output_label.config(text=f"Sorry, {starttoon} is geen geldige toonsoort.")
-    elif toonsoort == "MINEUR 7":
+
+
+
+
+    if toonsoort == "MINEUR 7":
         starttoon = normalize_toon(starttoon)
         if starttoon in flat_to_sharp:
             starttoon = flat_to_sharp[starttoon]
@@ -71,7 +83,7 @@ def bereken_akkoorden():
 
 root = tk.Tk()
 root.title("Toonladder Generator")
-root.geometry("600x200")
+root.geometry("600x300")
 
 toonsoort_var = tk.StringVar(value="MAJEUR")
 tk.Label(root, text="Werk je in mineur of majeur?").pack()
@@ -87,5 +99,20 @@ normal_font = tkFont.Font(family="Arial", size=18, weight="bold")
 output_label = tk.Label(root, text="", fg="green", font=normal_font)
 output_label.pack(pady=10)
 
+def open_songwriting_venster():
+    songwriting_venster = tk.Toplevel(root)
+    songwriting_venster.title("Songwriting")
+    songwriting_venster.geometry("400x400")
+
+    tk.Label(songwriting_venster, text="Hier kunnen we songwriten!").pack(pady=10)
+    tk.Button(songwriting_venster, text="Afsluiten", width=25, command=songwriting_venster.destroy).pack()
+
+tk.Button(root, padx=20, pady=50, text=f"Begin met songwriten!""\n""(opent een ander venster)", command=open_songwriting_venster).pack()
+
 tk.Button(root, text="Afsluiten", width=25, command=root.destroy).pack()
+
+
+
+
+
 root.mainloop()
