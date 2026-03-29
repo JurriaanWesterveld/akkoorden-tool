@@ -21,7 +21,7 @@ def majeur_toonladder(starttoon):
         j += 1   
     for i in [1,2,5]:
         akkoorden[i] += "m"
-    akkoorden[6] += "dim"
+    akkoorden[6] += "°"
     return akkoorden
 
 def mineur_toonladder(starttoon):
@@ -43,7 +43,7 @@ def mineur_toonladder(starttoon):
         j += 1   
     for i in [0,3,4]:
         akkoorden[i] += "m"
-    akkoorden[1] += "dim"
+    akkoorden[1] += "°"
     return akkoorden    
 
 

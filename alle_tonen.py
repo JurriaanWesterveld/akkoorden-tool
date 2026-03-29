@@ -4,7 +4,8 @@ alle_tonen_flat = ["C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "
 majeur_trappen = ["I", "no", "ii", "no", "iii", "IV", "no", "V", "no", "vi", "no", "vii0"]
 mineur_trappen = ["i", "no", "ii0", "III", "no", "iv", "no", "v", "VI", "no", "VII", "no"]
 
-sharp_toonsoorten_maj = ["C", "G", "D", "A", "E", "B", "F#", "C#"]
-sharp_toonsoorten_min = ["A", "E", "B", "F#", "C#"]
+sharp_toonsoorten_maj = ["C", "G", "D", "A", "E", "B", "F#"]
+sharp_toonsoorten_min = ["A", "E", "B", "F#", "G#", "C#", "D#"]
 
 sharp_to_flat = {"C#": "Db", "D#": "Eb", "G#": "Ab", "A#": "Bb"}
+flat_to_sharp = {"Gb": "F#", "Db": "C#", "Ab": "G#", "Eb": "D#"}
