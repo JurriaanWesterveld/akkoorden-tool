@@ -1,6 +1,7 @@
 from alle_tonen import *
 from toonsoort import *
 from grondtonen import *
+import tkinter as tk
 
 def normalize_toon(toon):
     toon = toon.strip()
@@ -9,32 +10,43 @@ def normalize_toon(toon):
     else:
         return toon[0].upper() + toon[1:]
 
-def main():
+def bereken_akkoorden():
+    toonsoort = toonsoort_var.get()
+    starttoon = starttoon_entry.get()
     
-    toonsoort = input("Wil je mineur of majeur? ").strip().upper()
     if toonsoort == "MAJEUR":
-
-        starttoon = input("Van welke toon wil je de akkoorden? ").strip()
         starttoon = normalize_toon(starttoon)
         if starttoon in sharp_to_flat:
             starttoon = sharp_to_flat[starttoon]
         try:
             akkoorden = majeur_toonladder(starttoon)
-            print(f"Majeurtoonladder van {starttoon}: {akkoorden}")
+            output_label.config(text=f"Majeurtoonladder van {starttoon}: {akkoorden}")
         except ValueError:
-            print(f"Sorry, {starttoon} is geen geldige toonsoort.")
+            output_label.config(text=f"Sorry, {starttoon} is geen geldige toonsoort.")
     elif toonsoort == "MINEUR":
-
-        starttoon = input("Van welke toon wil je de akkoorden? ").strip()
         starttoon = normalize_toon(starttoon)
         if starttoon in sharp_to_flat:
             starttoon = sharp_to_flat[starttoon]
         try:
             akkoorden = mineur_toonladder(starttoon)
-            print(f"Mineurtoonladder van {starttoon}: {akkoorden}")
+            output_label.config(text=f"Mineurtoonladder van {starttoon}: {akkoorden}")
         except ValueError:
-            print(f"Sorry, {starttoon} is geen geldige toonsoort.")
-    else:
-        raise ValueError("Geen geldige invoer")
+           output_label.config(text=f"Sorry, {starttoon} is geen geldige toonsoort.")
 
-main()
+root = tk.Tk()
+root.title("Toonladder Generator")
+
+toonsoort_var = tk.StringVar(value="MAJEUR")
+tk.Label(root, text="Werk je in mineur of majeur?").pack()
+tk.OptionMenu(root, toonsoort_var, "MAJEUR", "MINEUR").pack()
+
+tk.Label(root, text="Van welke toon wil je de akkoorden?").pack()
+starttoon_entry = tk.Entry(root)
+starttoon_entry.pack()
+
+tk.Button(root, text="Bereken akkoorden", command=bereken_akkoorden).pack()
+
+output_label = tk.Label(root, text="", fg="blue", font=("Helvetica", 12))
+output_label.pack(pady=10)
+
+root.mainloop()
