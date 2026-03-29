@@ -1,7 +1,7 @@
 from alle_tonen import alle_tonen_sharp, alle_tonen_flat, majeur_trappen, mineur_trappen, sharp_toonsoorten_maj, sharp_toonsoorten_min
 
 
-
+#Hier worden de trappen in majeur berekend zonder direct een toonsoort te geven
 def majeur_toonladder(starttoon):
     trappen = majeur_trappen
     if starttoon in sharp_toonsoorten_maj:
@@ -24,6 +24,7 @@ def majeur_toonladder(starttoon):
     akkoorden[6] += "°"
     return akkoorden
 
+#Hier worden de trappen in mineur berekend zonder direct een toonsoort te geven
 def mineur_toonladder(starttoon):
     trappen = mineur_trappen
     if starttoon in sharp_toonsoorten_min:
