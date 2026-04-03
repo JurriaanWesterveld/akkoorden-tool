@@ -1,15 +1,20 @@
+from tkinter import *
+from songwriting import *
 from toonladders import *
 from alle_tonen import *
 from septime import *
 from common import *
 
-
+#Hier wordt de invoer voor de starttoon genormaliseerd
 def normalize_toon(toon):
     toon = toon.strip()
     if len(toon) == 1:
         return toon.upper()
     else:
-        return toon[0].upper() + toon[1:]
+        return toon[0].upper() + toon[1:].lower()
+    
+#button voor songwriting venster
+venster_songwriting = tk.Button(root, padx=20, pady=50, text=f"Begin met songwriten!""\n""(opent een ander venster)", state=DISABLED, command=open_songwriting_venster)
 
 #Hier worden er tonen gegeven aan de trappen vanuit toonladders.py
 def bereken_trappen():
@@ -18,6 +23,10 @@ def bereken_trappen():
     
     #Hier wordt gekozen voor majeur
     if toonsoort == "MAJEUR":
+        if starttoon == "":
+            output_label.config(text="Kies een toon om te beginnen. e.g. C of Ab")
+            venster_songwriting.config(state=DISABLED)
+            return None
         starttoon = normalize_toon(starttoon)
         if starttoon in sharp_to_flat:
             starttoon = sharp_to_flat[starttoon]
@@ -30,30 +39,15 @@ def bereken_trappen():
             output_label.config(text=f"Majeurtoonladder van {starttoon}: {akkoorden}")
         except ValueError:
             output_label.config(text=f"Sorry, {starttoon} is geen geldige toonsoort.")
-    tk.Button(root, padx=20, pady=50, text=f"Begin met songwriten!""\n""(opent een ander venster)", command=open_songwriting_venster).pack()
-
-
-    #Hier wordt gekozen voor majeur 7
-    if toonsoort == "MAJEUR 7":
-        starttoon = normalize_toon(starttoon)
-        if starttoon in sharp_to_flat:
-            starttoon = sharp_to_flat[starttoon]
-        try:
-            akkoorden = majeur_toonladder(starttoon)
-            if starttoon == "Gb":
-                akkoorden = ["Cb" if akkoord == "B" else akkoord for akkoord in akkoorden]
-            elif starttoon == "F#":
-                akkoorden = ["E#°" if akkoord == "F°" else akkoord for akkoord in akkoorden]
-            akkoorden = majeur_septime(akkoorden)
-            output_label.config(text=f"Majeurtoonladder van {starttoon}: {akkoorden}")
-        except ValueError:
-            output_label.config(text=f"Sorry, {starttoon} is geen geldige toonsoort.")
-    tk.Button(root, padx=20, pady=50, text=f"Begin met songwriten!""\n""(opent een ander venster)", command=open_songwriting_venster).pack()
-
-
+        venster_songwriting.config(state=NORMAL)
+        venster_songwriting.pack(pady=10)
 
     #Hier wordt gekozen voor mineur
     if toonsoort == "MINEUR":
+        if starttoon == "":
+            output_label.config(text="Kies een toon om te beginnen. e.g. C of Ab")
+            venster_songwriting.config(state=DISABLED)
+            return None
         starttoon = normalize_toon(starttoon)
         if starttoon in flat_to_sharp:
             starttoon = flat_to_sharp[starttoon]
@@ -64,20 +58,5 @@ def bereken_trappen():
             output_label.config(text=f"Mineurtoonladder van {starttoon}: {akkoorden}")
         except ValueError:
            output_label.config(text=f"Sorry, {starttoon} is geen geldige toonsoort.")
-    tk.Button(root, padx=20, pady=50, text=f"Begin met songwriten!""\n""(opent een ander venster)", command=open_songwriting_venster).pack()
-
-
-    #Hier wordt gekozen voor mineur 7
-    if toonsoort == "MINEUR 7":
-        starttoon = normalize_toon(starttoon)
-        if starttoon in flat_to_sharp:
-            starttoon = flat_to_sharp[starttoon]
-        try:
-            akkoorden = mineur_toonladder(starttoon)
-            if starttoon == "D#":
-                akkoorden = ["E#°" if akkoord == "F°" else akkoord for akkoord in akkoorden]
-            akkoorden = mineur_septime(akkoorden)
-            output_label.config(text=f"Mineurtoonladder van {starttoon}: {akkoorden}")
-        except ValueError:
-            output_label.config(text=f"Sorry, {starttoon} is geen geldige toonsoort.")
-    tk.Button(root, padx=20, pady=50, text=f"Begin met songwriten!""\n""(opent een ander venster)", command=open_songwriting_venster).pack()
+        venster_songwriting.config(state=NORMAL)
+        venster_songwriting.pack(pady=10)
