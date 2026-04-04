@@ -1,15 +1,25 @@
+from toonladders import *
 
+def mineur_septime(starttoon):
+    toonladder = mineur_toonladder(starttoon)
+    septime_akkoorden = toonladder.copy()
+    septime_akkoorden[0] += "7"
+    septime_akkoorden[1] += "7"
+    septime_akkoorden[2] += "maj7"
+    septime_akkoorden[3] += "7"
+    septime_akkoorden[4] += "7"
+    septime_akkoorden[5] += "maj7"
+    septime_akkoorden[6] += "7"
+    return septime_akkoorden
 
-def majeur_septime(toonladder):
-    for i in [0,3]:
-        toonladder[i] += "Maj7"
-    for i in [1,2,4,5,6]:
-        toonladder[i] += "7"
-    return toonladder
-
-def mineur_septime(toonladder):
-    for i in [2,5]:
-        toonladder[i] += "Maj7"
-    for i in [0,1,3,4,6]:
-        toonladder[i] += "7"
-    return toonladder
+def majeur_septime(starttoon):
+    toonladder = majeur_toonladder(starttoon)
+    septime_akkoorden = toonladder.copy()
+    septime_akkoorden[0] += "maj7"
+    septime_akkoorden[1] += "7"
+    septime_akkoorden[2] += "7"
+    septime_akkoorden[3] += "maj7"
+    septime_akkoorden[4] += "7"
+    septime_akkoorden[5] += "7"
+    septime_akkoorden[6] += "7"
+    return septime_akkoorden
