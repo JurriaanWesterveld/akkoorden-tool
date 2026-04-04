@@ -17,12 +17,12 @@ tk.OptionMenu(root, toonsoort_var, "MAJEUR", "MINEUR").pack()
 tk.Label(root, text="Van welke toon wil je de akkoorden?").pack()
 starttoon_entry.pack()
 tk.Button(root, text="Bereken akkoorden", command=bereken_trappen).pack()
-output_drieklank.pack()
-output_vierklank.pack()
+output_label.pack()
+
 
 #button voor afsluiten
-tk.Button(root, text="Afsluiten", width=25, activebackground="red", command=root.destroy).pack(pady=20)
-
+afsluiten_button = tk.Button(root, text="Afsluiten", width=25, activebackground="red", command=root.destroy)
+afsluiten_button.place(relx=0.5, rely=0.9, anchor=CENTER)
 
 
 root.mainloop()

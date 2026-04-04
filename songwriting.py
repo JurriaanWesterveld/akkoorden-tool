@@ -1,6 +1,7 @@
 from common import *
-import tkinter as tk
+from tkinter import *
 from toonladders import *
+#from bereken_akkoorden import *
 
 
 #Dit opent een songwriting venster
@@ -43,4 +44,5 @@ def open_songwriting_venster():
 
 
     #button voor afsluiten
-    tk.Button(songwriting_venster, text="Afsluiten", width=25, activebackground="red", command=songwriting_venster.destroy).pack()
+    afsluiten_button2 = tk.Button(songwriting_venster, text="Afsluiten", width=25, activebackground="red", command=songwriting_venster.destroy)
+    afsluiten_button2.place(relx=0.5, rely=0.9, anchor=CENTER)

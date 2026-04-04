@@ -1,5 +1,5 @@
 from tkinter import *
-from songwriting import *
+from songwriting import open_songwriting_venster
 from toonladders import *
 from alle_tonen import *
 from septime import *
@@ -32,12 +32,13 @@ def bereken_trappen():
             starttoon = sharp_to_flat[starttoon]
         try:
             akkoorden = majeur_toonladder(starttoon)
-            output_drieklank.config(text=f"Majeurtoonladder van {starttoon}: {akkoorden}")
-            output_vierklank.config(text=f"Majeur Septime ladder van {starttoon}: {majeur_septime(starttoon)}")
+            output_label.config(text=f"Majeurtoonladder van {starttoon}: {akkoorden}""\n"f"Septime:{majeur_septime(starttoon)}")
+            venster_songwriting.config(state=NORMAL)
+            venster_songwriting.pack(pady=10)
         except ValueError:
             output_label.config(text=f"Sorry, {starttoon} is geen geldige toonsoort.")
-        venster_songwriting.config(state=NORMAL)
-        venster_songwriting.pack(pady=10)
+            venster_songwriting.config(state=DISABLED)
+        
         
 
     #Hier wordt gekozen voor mineur
@@ -51,11 +52,11 @@ def bereken_trappen():
             starttoon = flat_to_sharp[starttoon]
         try:
             akkoorden = mineur_toonladder(starttoon)
-            output_drieklank.config(text=f"Mineurtoonladder van {starttoon}: {akkoorden}")
-            output_vierklank.config(text=f"Mineur Septime ladder van {starttoon}: {mineur_septime(starttoon)}")
+            output_label.config(text=f"Mineurtoonladder van {starttoon}: {akkoorden}""\n"f"Septime:{mineur_septime(starttoon)}")
+            venster_songwriting.config(state=NORMAL)
+            venster_songwriting.pack(pady=10)
         except ValueError:
            output_label.config(text=f"Sorry, {starttoon} is geen geldige toonsoort.")
-        venster_songwriting.config(state=NORMAL)
-        venster_songwriting.pack(pady=10)
-    
+           venster_songwriting.config(state=DISABLED)
+        
 
